@@ -1,0 +1,12 @@
+FROM node:latest
+RUN apt update -y
+WORKDIR /data/
+COPY customer.js customer.js
+COPY FairDelegation1_sol_EllipticCurve.bin FairDelegation1_sol_EllipticCurve.bin
+COPY FairDelegation1_sol_FairDelegation1.bin FairDelegation1_sol_FairDelegation1.bin
+COPY FairDelegation1_sol_EllipticCurve.abi FairDelegation1_sol_EllipticCurve.abi
+COPY FairDelegation1_sol_FairDelegation1.abi FairDelegation1_sol_FairDelegation1.abi
+COPY util.js util.js
+RUN npm install ws-await web3-eth-contract eth-crypto web3
+EXPOSE 8001
+ENTRYPOINT ["node", "customer.js"]

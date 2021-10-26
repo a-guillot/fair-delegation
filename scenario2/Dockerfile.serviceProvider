@@ -1,0 +1,12 @@
+FROM node:latest
+RUN apt update -y
+WORKDIR /data/
+COPY serviceProvider.js serviceProvider.js
+COPY FairDelegation2_sol_EllipticCurve.bin FairDelegation2_sol_EllipticCurve.bin
+COPY FairDelegation2_sol_FairDelegation2.bin FairDelegation2_sol_FairDelegation2.bin
+COPY FairDelegation2_sol_EllipticCurve.abi FairDelegation2_sol_EllipticCurve.abi
+COPY FairDelegation2_sol_FairDelegation2.abi FairDelegation2_sol_FairDelegation2.abi
+COPY util.js util.js
+RUN npm install ws-await web3-eth-contract eth-crypto web3
+EXPOSE 8002
+ENTRYPOINT ["node", "serviceProvider.js"]
