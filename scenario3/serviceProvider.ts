@@ -127,7 +127,6 @@ class ServiceProvider {
         this.methodCost = await this.contract.methods.serviceProvider(
             '0x' + this.privateKey
         ).estimateGas();
-        console.log(`S3 - spCost: ${this.methodCost}`)
 
         this.pairCost = await this.contract.methods.pair(
             '0x' + this.privateKey,
@@ -135,6 +134,7 @@ class ServiceProvider {
             '0x' + this.privateKey,
         ).estimateGas();
         console.log(`S3 - pairCost: ${this.pairCost}`)
+        console.log(`S3 - spCost: ${this.methodCost - this.pairCost}`)
 
         await this.contract.methods.serviceProvider(
             '0x' + this.privateKey,

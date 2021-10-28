@@ -167,12 +167,12 @@ var ServiceProvider = /** @class */ (function () {
                         return [4 /*yield*/, this.contract.methods.serviceProvider('0x' + this.privateKey).estimateGas()];
                     case 1:
                         _a.methodCost = _c.sent();
-                        console.log("S3 - spCost: " + this.methodCost);
                         _b = this;
                         return [4 /*yield*/, this.contract.methods.pair('0x' + this.privateKey, '0x' + this.privateKey, '0x' + this.privateKey).estimateGas()];
                     case 2:
                         _b.pairCost = _c.sent();
                         console.log("S3 - pairCost: " + this.pairCost);
+                        console.log("S3 - spCost: " + (this.methodCost - this.pairCost));
                         return [4 /*yield*/, this.contract.methods.serviceProvider('0x' + this.privateKey).send({
                                 from: this.address, gas: 1000000, gasPrice: '0'
                             }).on('error', function (error) {

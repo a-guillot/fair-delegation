@@ -1,5 +1,4 @@
 FROM node:latest
-RUN apt update -y
 WORKDIR /data/
 COPY customer.js customer.js
 COPY FairDelegation3_sol_EllipticCurve.bin FairDelegation3_sol_EllipticCurve.bin
