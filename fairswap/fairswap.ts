@@ -2,14 +2,14 @@ import Fs from 'fs';
 import Web3 from 'web3';
 import { Contract } from 'web3-eth-contract';
 
-const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8545'));
+const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://172.16.238.45:8545'));
 
 
 class FairSwap{
     contract!: Contract;
 
     generateContract() {
-        const compiled_name = './contracts/fairswap_sol_fileSale';
+        const compiled_name = 'fairswap_sol_fileSale';
         const abi = JSON.parse(
             Fs.readFileSync(compiled_name + '.abi').toString()
         );
@@ -23,8 +23,11 @@ class FairSwap{
     }
 
     async pushContract() {
+        // while (true) {
+        //     await new Promise( resolve => setTimeout(resolve, 1000) );
+        // }
         const contractCost = await this.contract.deploy({
-            data: '0x123',
+            data: '',
             arguments: []
         }).estimateGas();
 

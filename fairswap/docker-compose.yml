@@ -1,0 +1,20 @@
+version: '3.9'
+
+networks:
+  blockchain_app_net:
+    external:
+        name: blockchain_app_net
+
+services:
+    fairswap:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        container_name: fairswap
+        ports:
+            - '8080:8080'
+        expose:
+            - '8080'
+        networks:
+            blockchain_app_net:
+                ipv4_address: 172.16.238.66
