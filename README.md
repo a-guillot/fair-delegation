@@ -9,7 +9,8 @@ Implementation of the paper...
 
 
 In another terminal:
-`cd scenario3`
+`cd scenarioX`
 `rm *js && tsc --EsModuleInterop *ts`
 `docker-compose down`
+`./stop.sh`
 `docker-compose up --build`
